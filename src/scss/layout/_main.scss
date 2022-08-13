@@ -1,0 +1,25 @@
+@use '../global' as *;
+
+.l-wrapper {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 100vh;
+  @include vh100;
+}
+
+.l-main {
+  flex: 1;
+  // padding-top: 45px;
+  padding-top: min(vw(90), 62px);
+  overflow: hidden;
+  @include mq(pc) {
+    padding-top: 62px;
+  }
+  &.p-top-main {
+    padding-top: 0;
+    @include mq(pc) {
+      padding-top: 0;
+    }
+  }
+}

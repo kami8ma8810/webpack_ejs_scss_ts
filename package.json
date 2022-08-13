@@ -1,0 +1,54 @@
+{
+  "name": "webpack_ejs_scss_ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --config webpack.prod.js && html-beautify dist/**/*.html",
+    "dev": "webpack serve --config webpack.dev.js",
+    "watch": "webpack --watch --config webpack.dev.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kami8ma8810/webpack_ejs_scss_ts.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kami8ma8810/webpack_ejs_scss_ts/issues"
+  },
+  "homepage": "https://github.com/kami8ma8810/webpack_ejs_scss_ts#readme",
+  "devDependencies": {
+    "@babel/core": "^7.18.10",
+    "@babel/preset-env": "^7.18.10",
+    "@fullhuman/postcss-purgecss": "^4.1.3",
+    "autoprefixer": "^10.4.8",
+    "babel-loader": "^8.2.5",
+    "copy-webpack-plugin": "^11.0.0",
+    "css-declaration-sorter": "^6.3.0",
+    "css-loader": "^6.7.1",
+    "html-loader": "^4.1.0",
+    "html-webpack-plugin": "^5.5.0",
+    "js-beautify": "^1.14.5",
+    "mini-css-extract-plugin": "^2.6.1",
+    "postcss": "^8.4.16",
+    "postcss-loader": "^7.0.1",
+    "postcss-normalize-charset": "^5.1.0",
+    "postcss-sort-media-queries": "^4.2.1",
+    "sass": "^1.54.4",
+    "sass-loader": "^13.0.2",
+    "template-ejs-loader": "^0.9.4",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.10.0",
+    "webpack-watched-glob-entries-plugin": "^2.2.4"
+  },
+  "browserslist": [
+    "last 3 versions",
+    "> 5%",
+    "iOS >= 9.0",
+    "Android >= 5",
+    "Firefox ESR"
+  ]
+}

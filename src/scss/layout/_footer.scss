@@ -1,0 +1,40 @@
+@use '../global' as *;
+
+.l-footer {
+  position: relative;
+  z-index: 10;
+  // background-color: orange;
+  background-color: var(--colorBg);
+  &__inner {
+    // padding: 30px 0 12px;
+    padding: vw(60) 0 vw(24);
+    @include mq(pc) {
+      width: 1000px;
+      margin-inline: auto;
+      padding: 33px 0 30px;
+    }
+  }
+
+  &__nav {
+    margin-top: vw(80);
+    @include mq(pc) {
+      margin-top: 55px;
+    }
+  }
+
+  &__copyright {
+    margin-top: 4.3em;
+    text-align: center;
+    font-size: vw(20);
+    letter-spacing: 0.02em;
+    transform: scale(0.85);
+    small {
+      font-size: 100%;
+    }
+    @include mq(pc) {
+      font-size: rem(14);
+      transform: none;
+      letter-spacing: 0.07em;
+    }
+  }
+}

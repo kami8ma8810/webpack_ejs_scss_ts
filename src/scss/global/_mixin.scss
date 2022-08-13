@@ -1,0 +1,156 @@
+@use 'variable' as *;
+@use 'font' as *;
+@use 'sass:math';
+@use 'sass:string';
+
+@mixin arial {
+  font-family: Arial, Helvetica, sans-serif;
+}
+@mixin arial-bold {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+@mixin yugo {
+  font-family: '游ゴシック Medium', 'Yu Gothic Medium', '游ゴシック体', YuGothic,
+    '游ゴシック', 'Yu Gothic', sans-serif;
+}
+@mixin yugo-bold {
+  font-family: '游ゴシック体', YuGothic, '游ゴシック', 'Yu Gothic', sans-serif;
+  font-weight: bold;
+}
+
+// アスペクト比でブレイクポイント設定
+// 例：min-aspect-ratio:4/3 ⇒ 幅:高さ=4:3の比率を超えたら適用
+@mixin aspect-ratio($top: 4, $bottom: 3) {
+  $aspectRatio: math.div($top, $bottom);
+  @media print, screen and (min-aspect-ratio: $aspectRatio) {
+    @content;
+  }
+}
+
+// 行末を…にする
+@mixin clamp($line: 2) {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: $line;
+  /*! autoprefixer: off */
+  -webkit-box-orient: vertical;
+}
+
+// 文末揃え
+@mixin textjustify {
+  text-align: justify;
+  text-justify: inter-character; //for Firefox
+}
+
+// ホバーが使えないデバイス用
+@mixin disableHover {
+  @media (hover: none) {
+    @content;
+  }
+}
+
+// ホバーが使えるデバイス用
+@mixin enableHover {
+  @media (hover: hover) {
+    @content;
+  }
+}
+
+// スマホメニューバーの高さフォールバック
+@mixin vh100 {
+  min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100); //for safari
+}
+
+// 視差効果を減らすON
+@mixin animationOn {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
+// 視差効果を減らすOFF
+@mixin animationOff {
+  @media (prefers-reduced-motion: no-preference) {
+    @content;
+  }
+}
+
+// 背景画像のwebp対応（ブラウザで出し分けする）
+$webpClassName: '.webp';
+$noWebpClassName: '.no-webp';
+
+// 入れ子にする場合
+@mixin webpBg($filePath, $fileExtension: 'jpg') {
+  #{$webpClassName} & {
+    background-image: url(#{$filePath}.webp);
+  }
+  #{$noWebpClassName} & {
+    background-image: url(#{$filePath}.#{$fileExtension});
+  }
+}
+// 【記述例】
+// .box{
+// @include webpBg('../images/bg', 'png');
+// }
+// ※入れ子内で記述する
+
+// ================================================
+// ↓入れ子にしない場合
+// @mixin webpBg($selector, $filePath, $fileExtension: 'jpg') {
+//   #{$noWebpClassName} #{$selector} {
+//     background-image: url(#{$filePath}.#{$fileExtension});
+//   }
+//   #{$webpClassName} #{$selector} {
+//     background-image: url(#{$filePath}.webp);
+//   }
+// }
+// 【記述例】
+// @include webpBg('.main .test', '../images/bg', 'png');
+// ※入れ子内で記述しない
+
+// メディアクエリ（印刷対応する場合はprintを記述）
+
+//break point
+$breakpoints: (
+  'se': (
+    min-width: 320px,
+  ),
+  'std': (
+    min-width: 375px,
+  ),
+  'sm': (
+    min-width: 520px,
+  ),
+  'md': (
+    min-width: 768px,
+  ),
+  'lg': (
+    min-width: 960px,
+  ),
+  'tab': (
+    min-width: 1024px,
+  ),
+  'pc': (
+    min-width: 1025px,
+  ),
+  'xl': (
+    min-width: 1366px,
+  ),
+  'fullHd': (
+    min-width: 1920px,
+  ),
+  'wqHd': (
+    min-width: 2560px,
+  ),
+) !default;
+
+@mixin mq($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media print,screen and #{inspect(map-get($breakpoints, $breakpoint))} {
+      @content;
+    }
+  }
+}

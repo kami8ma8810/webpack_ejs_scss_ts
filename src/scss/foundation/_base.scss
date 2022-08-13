@@ -1,0 +1,156 @@
+@use '../global' as *;
+
+// +++++++++++++++++++++++++++++++++++++++++++++++++
+// 追加resetスタイル
+// +++++++++++++++++++++++++++++++++++++++++++++++++
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+div,
+dt,
+dd,
+li,
+ul,
+ol,
+span,
+figcaption,
+address,
+th,
+td,
+thead,
+caption,
+label,
+input,
+form,
+button,
+select,
+textarea,
+sup,
+sub {
+  line-break: strict;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+picture {
+  display: block;
+}
+
+img,
+source {
+  max-width: 100%;
+  height: auto;
+}
+
+*,
+*::before,
+*::after {
+  background-repeat: no-repeat;
+}
+
+a,
+button {
+  @include enableHover {
+    cursor: pointer;
+    transition: opacity 0.2s $easeOutCirc;
+    & > * {
+      transition: opacity 0.2s $easeOutCirc;
+    }
+    &:hover {
+      opacity: 0.85 !important;
+      & > * {
+        opacity: 0.85 !important;
+      }
+    }
+  }
+}
+
+// =================================================
+// モーションOFF（iphoneの"視差効果を減らす"がONの場合アニメーションしない）
+// =================================================
+@media (prefers-reduced-motion: reduce) {
+  // CSSアニメーションを一括で無効化
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+// =================================================
+// 共通スタイル
+// =================================================
+
+:root {
+  // --colorText: #{$color-text};//scssで登録する場合
+  --colorBg: #{$color-bg};
+  --colorText: #{$color-text};
+  --colorTextGray: #{$color-text-gray};
+  --colorGreen: #{$color-green};
+  --colorBlue: #{$color-blue};
+  --colorNavy: #{$color-navy};
+}
+
+body {
+  font-size: rem(16);
+  background-color: var(--colorBg);
+  color: var(--colorText);
+  @include yugo;
+  font-feature-settings: 'palt';
+  letter-spacing: 0.1em;
+
+  // トップページで省電力モードのときvideoのボタンをタップできるようにする
+  &.is-top.is-lowPower {
+    pointer-events: none;
+    .l-main {
+      pointer-events: none;
+      .p-top-main__fv {
+        position: relative;
+        pointer-events: none;
+      }
+      .p-top-main__person,
+      .p-top-main__company,
+      .p-top-main__work,
+      .p-top-main__place,
+      .p-top-main__qa,
+      .p-top-main__recruit {
+        pointer-events: all;
+        position: relative;
+      }
+    }
+    .l-footer {
+      position: relative;
+      pointer-events: all;
+    }
+    .top-movie {
+      z-index: 0;
+      pointer-events: all;
+      video {
+        position: relative;
+        z-index: 10;
+        pointer-events: all;
+      }
+      &__layer {
+        z-index: 11;
+      }
+    }
+  }
+
+  &.ua-macos {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  &.ua-chrome {
+    // Chrome 画像のにじみ対策
+    img,
+    source {
+      image-rendering: -webkit-optimize-contrast;
+    }
+  }
+}
