@@ -10,7 +10,7 @@ const webpackConfig = (MODE) => {
   const filePath = {
     js: './src/js/',
     ejs: './src/ejs/',
-    sass: './src/scss/',
+    sass: './src/sass/',
   };
 
   // ソースマップの利用有無判別（productionのときはソースマップを利用しない）
