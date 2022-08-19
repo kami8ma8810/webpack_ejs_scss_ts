@@ -2,32 +2,31 @@
 @use 'sass:math';
 @use 'sass:string';
 
-//pxをvw/vhに変換
-@function vw($size, $viewport: 750) {
-  $rate: math.div(100, $viewport);
-  @return $rate * $size * 1vw;
-}
-@function vw_lg($size, $viewport: 1366) {
-  $rate: math.div(100, $viewport);
-  @return $rate * $size * 1vw;
-}
-@function vh($size, $viewport: 1000) {
-  $rate: math.div(100, $viewport);
-  @return $rate * $size * 1vh;
-}
-@function vh_lg($size, $viewport: 800) {
-  $rate: math.div(100, $viewport);
-  @return $rate * $size * 1vh;
-}
-@function vh_fv($size, $viewport: 1334) {
-  $rate: math.div(100, $viewport);
-  @return $rate * $size * 1vh;
-}
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+初期設定（font-size,viewport）※デザインカンプごとに変更してください。
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+$baseFontSize: 16; //ルートフォントサイズ
+$viewportSpWidth: 375; //SPデザインカンプの幅
+$viewportSpHeight: 800; //SPデザインカンプの高さ（MVなど）
+$viewportPcWidth: 1366; //PCデザインカンプの幅
+$viewportPcHeight: 768; //PCデザインカンプの高さ（MVなど）
 
-// pxをremに変換
-@function rem($px, $basePx: 16) {
-  $rate: math.div($px, $basePx);
-  @return $rate * 1rem;
+//vw, vh で出力
+@function vw($size) {
+  $rate: math.div(100, $viewportSpWidth);
+  @return $rate * $size * 1vw;
+}
+@function vw_pc($size) {
+  $rate: math.div(100, $viewportPcWidth);
+  @return $rate * $size * 1vw;
+}
+@function vh($size) {
+  $rate: math.div(100, $viewportSpHeight);
+  @return $rate * $size * 1vh;
+}
+@function vh_pc($size) {
+  $rate: math.div(100, $viewportPcHeight);
+  @return $rate * $size * 1vh;
 }
 
 // line-height
@@ -37,33 +36,27 @@
   @return math.div($rate2, 100);
 }
 
-// 設定値（案件ごとのデザインカンプを適用）
-$base-font-size: 16;
-$viewportMin: 375;
-$viewportMax: 1366;
-
+// フォントサイズ clamp
 @function strip-unit($num) {
   @return math.div($num, ($num * 0 + 1));
 }
-
 @function divide-root($px) {
-  @return math.div(strip-unit($px), $base-font-size);
+  @return math.div(strip-unit($px), $baseFontSize);
 }
-
 @function rem($px) {
   @return divide-root($px) * 1rem;
 }
-
-// 参考：https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/
 @function fluid($min-size, $max-size) {
   $min-unit: rem($min-size);
   $max-unit: rem($max-size);
   $min-num: divide-root($min-size);
   $max-num: divide-root($max-size);
-  $min-breakpoint: divide-root($viewportMin);
-  $max-breakpoint: divide-root($viewportMax);
+  $min-breakpoint: divide-root($viewportSpWidth);
+  $max-breakpoint: divide-root($viewportPcWidth);
   $slope: math.div(($max-num - $min-num), ($max-breakpoint - $min-breakpoint));
   $calc-rem: ($min-breakpoint * -1 * $slope + $min-num) * 1rem;
   $calc-vw: ($slope * 100) * 1vw;
   @return clamp($min-unit, $calc-rem + $calc-vw, $max-unit);
 }
+
+// 参考：https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/

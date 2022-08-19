@@ -1,0 +1,10 @@
+{
+  "include_mq-pc": {
+		"prefix": "pc",
+		"body": [
+			"@include mq(pc) {",
+			"$0",
+			"}"
+		]
+	},
+}

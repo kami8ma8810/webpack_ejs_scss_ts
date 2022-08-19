@@ -41,8 +41,7 @@ picture {
   display: block;
 }
 
-img,
-source {
+img {
   max-width: 100%;
   height: auto;
 }
@@ -57,16 +56,6 @@ a,
 button {
   @include enableHover {
     cursor: pointer;
-    transition: opacity 0.2s $easeOutCirc;
-    & > * {
-      transition: opacity 0.2s $easeOutCirc;
-    }
-    &:hover {
-      opacity: 0.85 !important;
-      & > * {
-        opacity: 0.85 !important;
-      }
-    }
   }
 }
 
@@ -101,7 +90,6 @@ body {
   font-size: rem(16);
   background-color: var(--colorBg);
   color: var(--colorText);
-  @include yugo;
   font-feature-settings: 'palt';
 
   // トップページで省電力モードのときvideoのボタンをタップできるようにする

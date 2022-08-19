@@ -1,0 +1,27 @@
+@use '../global' as *;
+
+// スクリーンリーダー非表示用
+.u-sr {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  border: 0 !important;
+}
+
+.u-dn- {
+  @include mq(pc) {
+    display: none;
+  }
+}
+
+.u-ds-pc {
+  display: none;
+  @include mq(pc) {
+    display: inherit;
+  }
+}

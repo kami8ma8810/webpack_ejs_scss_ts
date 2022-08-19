@@ -1,0 +1,31 @@
+@use '../global' as *;
+
+.u-upper {
+  text-transform: uppercase;
+}
+
+.u-justify {
+  @include textjust;
+}
+
+.u-ls0 {
+  letter-spacing: 0;
+}
+.u-ls002 {
+  letter-spacing: 0.02em;
+}
+.u-ls003 {
+  letter-spacing: 0.03em;
+}
+.u-ls005 {
+  letter-spacing: 0.05em;
+}
+.u-ls008 {
+  letter-spacing: 0.08em;
+}
+.u-ls01 {
+  letter-spacing: 0.1em;
+}
+.u-ls015 {
+  letter-spacing: 0.15em;
+}

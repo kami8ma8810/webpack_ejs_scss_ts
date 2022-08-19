@@ -3,23 +3,6 @@
 @use 'sass:math';
 @use 'sass:string';
 
-@mixin arial {
-  font-family: Arial, Helvetica, sans-serif;
-}
-@mixin arial-bold {
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-}
-
-@mixin yugo {
-  font-family: '游ゴシック Medium', 'Yu Gothic Medium', '游ゴシック体', YuGothic,
-    '游ゴシック', 'Yu Gothic', sans-serif;
-}
-@mixin yugo-bold {
-  font-family: '游ゴシック体', YuGothic, '游ゴシック', 'Yu Gothic', sans-serif;
-  font-weight: bold;
-}
-
 // アスペクト比でブレイクポイント設定
 // 例：min-aspect-ratio:4/3 ⇒ 幅:高さ=4:3の比率を超えたら適用
 @mixin aspect-ratio($top: 4, $bottom: 3) {
@@ -39,8 +22,9 @@
 }
 
 // 文末揃え
-@mixin textjustify {
+@mixin textjust {
   text-align: justify;
+  text-justify: inter-ideograph;
   text-justify: inter-character; //for Firefox
 }
 
