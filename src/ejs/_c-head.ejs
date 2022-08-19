@@ -1,0 +1,46 @@
+<%
+const siteName='Animo Park';
+const siteUrl='https://';
+%>
+
+<meta charset="UTF-8" />
+<title><%= meta.title %><%= siteName %></title>
+<meta name="description" content="<%= meta.description %>" />
+<meta name="keywords" content="<%= meta.keywords %>">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="index,follow" />
+<meta content="telephone=no" name="format-detection" />
+<link rel="canonical" href="<%= meta.pageUrl %>">
+<meta property="og:title" content="<%= meta.title %><%= siteName %>" />
+<meta property="og:description" content="<%= meta.description %>" />
+<meta property="og:url" content="<%= meta.pageUrl %>" />
+<meta property="og:image" content="<%= siteUrl %>ogp.jpg" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="<%= meta.title %><%= siteName %>" />
+<% if(meta.isTop) {%>
+<meta property="og:type" content="website" />
+<% } else {%>
+<meta property="og:type" content="article" />
+<% }%>
+<meta property="og:site_name" content="<%= siteName %>" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image:src" content="<%= siteUrl %>ogp.jpg" />
+<meta name="twitter:image:alt" content="<%= meta.title %><%= siteName %>" />
+<meta name="twitter:title" content="<%= meta.title %><%= siteName %>" />
+<meta name="twitter:description" content="<%= meta.description %>" />
+<meta name="thumbnail" content="<%= siteUrl %>ogp.jpg" />
+
+<link rel="stylesheet" href="./assets/css/style.css">
+<!-- 非同期読み込みする場合↓ -->
+<!-- <link rel="stylesheet" href="./assets/css/style.css" media="print" onload="this.media='all'" /> -->
+
+<!-- background-image 遅延読み込み用（hoverやclickなどアクションでしか表示されない画像がある場合↓ -->
+<!-- <link rel="stylesheet" href="./assets/css/preload.css" media="print" onload="this.media='all'" /> -->
+
+<noscript>
+	このサイトが完全に機能するには、JavaScript を有効にする必要があります。
+	以下サイトにお使いのウェブブラウザで JavaScript を有効にする方法が閲覧できますのでご参考ください。<a href="https://www.enablejavascript.io/" target="_blank">
+	</a>
+</noscript>

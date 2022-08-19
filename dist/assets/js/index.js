@@ -1,1 +1,1 @@
-console.log("RUN__index.js");
+(()=>{"use strict";window.addEventListener("load",(()=>{console.log("RUN__index.js")}))})();

@@ -87,47 +87,10 @@ button {
 }
 
 body {
-  font-size: rem(16);
   background-color: var(--colorBg);
   color: var(--colorText);
-  font-feature-settings: 'palt';
-
-  // トップページで省電力モードのときvideoのボタンをタップできるようにする
-  &.is-top.is-lowPower {
-    pointer-events: none;
-    .l-main {
-      pointer-events: none;
-      .p-top-main__fv {
-        position: relative;
-        pointer-events: none;
-      }
-      .p-top-main__person,
-      .p-top-main__company,
-      .p-top-main__work,
-      .p-top-main__place,
-      .p-top-main__qa,
-      .p-top-main__recruit {
-        pointer-events: all;
-        position: relative;
-      }
-    }
-    .l-footer {
-      position: relative;
-      pointer-events: all;
-    }
-    .top-movie {
-      z-index: 0;
-      pointer-events: all;
-      video {
-        position: relative;
-        z-index: 10;
-        pointer-events: all;
-      }
-      &__layer {
-        z-index: 11;
-      }
-    }
-  }
+  font-size: rem(16);
+  // font-feature-settings: 'palt';
 
   &.ua-macos {
     -webkit-font-smoothing: antialiased;

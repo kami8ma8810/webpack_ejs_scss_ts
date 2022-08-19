@@ -1,21 +1,20 @@
 <% const data = require('../json/data.json'); %>
 <% const pageMeta = {
-	title:'トップページ',
-	description:'トップページの概要文',
-	isTop:true
+	title:'私たちについて',
+	description:'私たちについての概要文',
 }; %>
 
 <!DOCTYPE html>
 <html lang="ja">
 
-<head prefix="og:http://ogp.me/ns# fb:http://ogp.me/ns/fb# website:http://ogp.me/ns/website#">
+<head prefix="og:http://ogp.me/ns# fb:http://ogp.me/ns/fb# article:http://ogp.me/ns/article#">
 	<%- include('./_c-head.ejs',{meta:pageMeta}); %>
 </head>
 
 <body>
 	<div class="l-wrapper">
 		<%- include('./_c-header.ejs'); %>
-		<%- include('./_main-index.ejs'); %>
+		<%- include('./_main-about.ejs'); %>
 		<%- include('./_c-footer.ejs'); %>
 	</div>
 	<script src="./assets/js/index.js?<%= data.param %>"></script>

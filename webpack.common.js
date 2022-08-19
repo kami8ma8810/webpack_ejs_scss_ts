@@ -8,9 +8,9 @@ const webpackConfig = (MODE) => {
 
   //ベースファイルのパス設定
   const filePath = {
-    js: './src/js/',
+    js: './src/assets/js/',
     ejs: './src/ejs/',
-    sass: './src/scss/',
+    sass: './src/assets/scss/',
   };
 
   // ソースマップの利用有無判別（productionのときはソースマップを利用しない）
@@ -233,7 +233,7 @@ const webpackConfig = (MODE) => {
         patterns: [
           //画像コピー
           {
-            from: path.resolve(__dirname, 'src/images/'),
+            from: path.resolve(__dirname, 'src/assets/images/'),
             to: path.resolve(__dirname, 'dist/assets/images'),
           },
         ],
