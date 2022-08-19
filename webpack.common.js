@@ -10,7 +10,7 @@ const webpackConfig = (MODE) => {
   const filePath = {
     js: './src/js/',
     ejs: './src/ejs/',
-    sass: './src/sass/',
+    sass: './src/scss/',
   };
 
   // ソースマップの利用有無判別（productionのときはソースマップを利用しない）
@@ -123,7 +123,14 @@ const webpackConfig = (MODE) => {
               loader: 'babel-loader',
               // Babel のオプションを指定する
               options: {
-                presets: [['@babel/preset-env', { targets: 'defaults' }]],
+                presets: [
+                  [
+                    '@babel/preset-env',
+                    {
+                      targets: 'defaults',
+                    },
+                  ],
+                ],
               },
             },
           ],
@@ -163,7 +170,12 @@ const webpackConfig = (MODE) => {
                     ['postcss-normalize-charset', {}],
                     ['autoprefixer', {}],
                     ['postcss-sort-media-queries', {}],
-                    ['css-declaration-sorter', { order: 'smacss' }],
+                    [
+                      'css-declaration-sorter',
+                      {
+                        order: 'smacss',
+                      },
+                    ],
                     [
                       '@fullhuman/postcss-purgecss',
                       {

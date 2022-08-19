@@ -1,3 +1,5 @@
 import '../scss/style.scss';
 
-console.log('RUN__index.js');
+window.addEventListener('load', () => {
+	console.log('RUN__index.js');
+});

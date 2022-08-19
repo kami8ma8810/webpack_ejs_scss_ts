@@ -103,7 +103,6 @@ body {
   color: var(--colorText);
   @include yugo;
   font-feature-settings: 'palt';
-  letter-spacing: 0.1em;
 
   // トップページで省電力モードのときvideoのボタンをタップできるようにする
   &.is-top.is-lowPower {

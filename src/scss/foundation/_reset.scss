@@ -405,17 +405,8 @@ table {
   border-collapse: collapse;
 }
 
-caption {
-  text-align: left;
-}
-
 td,
 th {
-  vertical-align: top;
   padding: 0;
-}
-
-th {
-  text-align: left;
-  font-weight: bold;
+  font-weight: normal;
 }
