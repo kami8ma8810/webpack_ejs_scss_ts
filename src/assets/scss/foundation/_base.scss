@@ -32,44 +32,47 @@ select,
 textarea,
 sup,
 sub {
-  line-break: strict;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
+	line-break: strict;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
 }
 
 picture {
-  display: block;
+	display: block;
 }
 
 img {
-  max-width: 100%;
-  height: auto;
+	max-width: 100%;
+	height: auto;
 }
 
 *,
 *::before,
 *::after {
-  background-repeat: no-repeat;
+	background-repeat: no-repeat;
 }
 
 a,
 button {
-  @include enableHover {
-    cursor: pointer;
-  }
+	@include enableHover {
+		cursor: pointer;
+	}
+	@include disableHover {
+		-webkit-tap-highlight-color: transparent;
+	}
 }
 
 // =================================================
 // モーションOFF（iphoneの"視差効果を減らす"がONの場合アニメーションしない）
 // =================================================
 @media (prefers-reduced-motion: reduce) {
-  // CSSアニメーションを一括で無効化
-  *,
-  *::before,
-  *::after {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-  }
+	// CSSアニメーションを一括で無効化
+	*,
+	*::before,
+	*::after {
+		transition-duration: 0.01ms !important;
+		animation-duration: 0.01ms !important;
+	}
 }
 
 // =================================================
@@ -77,30 +80,30 @@ button {
 // =================================================
 
 :root {
-  // --colorText: #{$color-text};//scssで登録する場合
-  --colorBg: #{$color-bg};
-  --colorText: #{$color-text};
-  --colorTextGray: #{$color-text-gray};
-  --colorGreen: #{$color-green};
-  --colorBlue: #{$color-blue};
-  --colorNavy: #{$color-navy};
+	// --colorText: #{$color-text};//scssで登録する場合
+	--colorBg: #{$color-bg};
+	--colorText: #{$color-text};
+	--colorTextGray: #{$color-text-gray};
+	--colorGreen: #{$color-green};
+	--colorBlue: #{$color-blue};
+	--colorNavy: #{$color-navy};
 }
 
 body {
-  background-color: var(--colorBg);
-  color: var(--colorText);
-  font-size: rem(16);
-  // font-feature-settings: 'palt';
+	background-color: var(--colorBg);
+	color: var(--colorText);
+	font-size: rem(16);
+	// font-feature-settings: 'palt';
 
-  &.ua-macos {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  &.ua-chrome {
-    // Chrome 画像のにじみ対策
-    img,
-    source {
-      image-rendering: -webkit-optimize-contrast;
-    }
-  }
+	&.ua-macos {
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+	&.ua-chrome {
+		// Chrome 画像のにじみ対策
+		img,
+		source {
+			image-rendering: -webkit-optimize-contrast;
+		}
+	}
 }

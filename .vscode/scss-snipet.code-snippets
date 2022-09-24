@@ -1,10 +1,43 @@
 {
-  "include_mq-pc": {
+	"include_mq-pc": {
 		"prefix": "pc",
 		"body": [
 			"@include mq(pc) {",
 			"$0",
 			"}"
 		]
+	},
+	"function_fluid": {
+		"prefix": "fluid",
+		"body": [
+			"fluid($1,$2)"
+		]
+	},
+	"this-root": {
+		"prefix": "this-root",
+		"body": [
+			"\\$this: &;"
+		],
+	},
+	"this": {
+		"prefix": "this",
+		"body": [
+			"#{\\$this}"
+		],
+	},
+	"enableHover": {
+		"prefix": "enableHover",
+		"body": [
+			"@include enableHover{$0}"
+		],
+	},
+	"svh-support": {
+		"prefix": "svh support",
+		"body": [
+			"height:100svh;",
+			"@supports not (height:100svh){",
+			"height:100vh;",
+			"}"
+		],
 	},
 }
