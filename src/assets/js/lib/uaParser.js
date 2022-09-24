@@ -10,6 +10,7 @@ const ua = (() => {
 		}
 
 		init() {
+			console.log('RUN__uaParser.js');
 			this.setUA();
 		}
 

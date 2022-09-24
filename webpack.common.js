@@ -14,8 +14,8 @@ const webpackConfig = (MODE) => {
 	};
 
 	// ソースマップの利用有無判別（productionのときはソースマップを利用しない）
-	const enabledSourceMap = MODE === 'development';
-	// const enabledSourceMap = MODE === 'production';
+	// const enabledSourceMap = MODE === 'development';
+	const enabledSourceMap = MODE === 'production';
 
 	//ベース設定読み込み
 	const path = require('path');
@@ -219,6 +219,20 @@ const webpackConfig = (MODE) => {
 						filename: 'assets/images/[name][ext]',
 					},
 				},
+			],
+		},
+
+		optimization: {
+			minimize: true,
+			minimizer: [
+				new TerserPlugin({
+					extractComments: false, // ライブラリのライセンスコメントなどを抽出した「xxx.LICENSE.txt」のようなファイルが出力されないようにする
+					terserOptions: {
+						compress: {
+							drop_console: true, // console.logを削除するかどうか（trueで削除）
+						},
+					},
+				}),
 			],
 		},
 
